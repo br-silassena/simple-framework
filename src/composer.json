@@ -1,0 +1,21 @@
+{
+    "name": "silassenadev/cms",
+    "description": "simples cms without framework",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Silas Sena"
+        }
+    ],
+    "require": {
+        "php": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "System\\": "system/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
