@@ -6,9 +6,6 @@ namespace System;
 
 abstract class Router
 {
-
-
-
     /**
      * @return void
      */
@@ -55,7 +52,7 @@ abstract class Router
             }
         }
 
-        echo "404";
+        require __DIR__ ."/pages/404.php";
     }
 
 
