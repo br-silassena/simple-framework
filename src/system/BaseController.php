@@ -3,10 +3,14 @@
 declare(strict_types=1);
 
 namespace System;
-class Controller
-{
 
-     /**
+use System\traits\Request;
+
+class BaseController
+{
+    use Request;
+    
+    /**
      * @param string view
      * @param array|null $params
      * 

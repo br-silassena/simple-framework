@@ -4,15 +4,14 @@ declare (strict_types=1);
 
 namespace App\Controller;
 
-use System\Controller;
+use System\BaseController;
 
-class HomeController extends Controller{
+class HomeController extends BaseController {
 
-    public function __construct() {
-    }
+    public function __construct() {}
 
     public function index()
     {
-        return $this->view('welcome', ['nome' => 'Silas Sena']);
+        return $this->view('welcome');
     }
 }

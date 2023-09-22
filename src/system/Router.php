@@ -11,7 +11,8 @@ abstract class Router
      */
     public static function getRouter(array $routes): void
     {
-        $currentUri = $_SERVER['REQUEST_URI'];
+        //pega a uri no browser e descarta as querys params quando a requisição for do tipo Get
+        $currentUri = explode('?', $_SERVER['REQUEST_URI'])[0];
         
         $browserRouter = explode("/", $currentUri);
         $browserRouter = array_filter($browserRouter, fn ($item) => $item !== "");

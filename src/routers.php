@@ -12,7 +12,8 @@ use App\Controller\HomeController;
  */
 $routes = [
     '' => [HomeController::class, 'index'],
-    '/teste/teste' => [HomeController::class, 'index']
+    '/destroy' => [HomeController::class, 'destroy'],
+    '/get' => [HomeController::class, 'get']
 ];
 
 return $routes;

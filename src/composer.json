@@ -1,6 +1,6 @@
 {
-    "name": "silassenadev/cms",
-    "description": "simples cms without framework",
+    "name": "silassenadev/mymicroframework",
+    "description": "simples framework without framework",
     "type": "project",
     "authors": [
         {
