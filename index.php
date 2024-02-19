@@ -10,5 +10,5 @@ use System\Router;
  */
 $routes = require __DIR__ .'/routers.php';
 
-Router::getRouter($routes);
 
+Router::getRouter($routes);

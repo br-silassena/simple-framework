@@ -6,9 +6,10 @@ namespace App\Controller;
 
 use System\BaseController;
 
-class HomeController extends BaseController {
-
-    public function __construct() {}
+class HomeController extends BaseController
+{
+    public function __construct(string $nome)
+    {}
 
     public function index()
     {

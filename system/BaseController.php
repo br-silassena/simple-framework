@@ -18,12 +18,10 @@ class BaseController
      */
     protected function view(string $view, array $params = []): void
     {
-      
         //criando variavel dinamicamente
         foreach($params as $key => $value)  {
             ${$key} = $value;
         }
-
         require __DIR__ . "/../app/{$view}.php";
     }
 }

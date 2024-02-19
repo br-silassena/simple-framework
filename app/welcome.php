@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-image: url('https://example.com/seu-fundo.jpg'); /* Substitua com o URL da sua imagem de fundo */
+            background-image: url('https://example.com/seu-fundo.jpg');
             background-size: cover;
             background-position: center;
             color: #fff;

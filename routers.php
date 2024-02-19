@@ -11,9 +11,7 @@ use App\Controller\HomeController;
  *  "/namerouter/paramrouter"
  */
 $routes = [
-    '' => [HomeController::class, 'index'],
-    '/destroy' => [HomeController::class, 'destroy'],
-    '/get' => [HomeController::class, 'get']
+    '' => [HomeController::class, 'index']
 ];
 
 return $routes;

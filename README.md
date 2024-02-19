@@ -1,0 +1,3 @@
+# Apresentação
+
+A presente é uma aplicação PHP trata-se de um micro-framework ainda em construção...

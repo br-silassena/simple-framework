@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace System;
 
+use System\ServiceContainer;
+#use System\ServiceContainer as SystemServiceContainer;
+
 abstract class Router
 {
     /**
      * @return void
      */
-    public static function getRouter(array $routes): void
+    final public static function getRouter(array $routes): void
     {
         //pega a uri no browser e descarta as querys params quando a requisição for do tipo Get
         $currentUri = explode('?', $_SERVER['REQUEST_URI'])[0];
@@ -44,7 +47,7 @@ abstract class Router
 
                     $controler = $routerValue[0];
                     $method = $routerValue[1];
-                    $object = new $controler;
+                    $object = ServiceContainer::container($controler);
                     $params = self::sanitizeParams($object, $method, $params);
 
                     echo $object->$method(...$params);
