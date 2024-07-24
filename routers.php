@@ -3,6 +3,7 @@
 require __DIR__ .'/vendor/autoload.php';
 
 use App\Controller\HomeController;
+use App\Controller\TestController;
 
 /*--------------------------------------------
  * Routers
@@ -11,7 +12,8 @@ use App\Controller\HomeController;
  *  "/namerouter/paramrouter"
  */
 $routes = [
-    '' => [HomeController::class, 'index']
+    '' => [HomeController::class, 'index'],
+    '/tipos' => [TestController::class, 'index']
 ];
 
 return $routes;

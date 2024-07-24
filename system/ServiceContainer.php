@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace System;
 
+
 abstract class ServiceContainer
 {
+    
+    use traits\Common;
+
     /**
      * @var array $services
      */
@@ -61,6 +65,10 @@ abstract class ServiceContainer
                 array_push($params, $instance);
             } else {
                 // Se não houver tipo de classe definido ou a classe não existir, apenas adicione o parâmetro ao array
+                $param = self::castVar($param);
+
+                echo gettype($param);
+
                 array_push($params, $param);
             }
         }
