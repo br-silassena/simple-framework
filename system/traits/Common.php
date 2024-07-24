@@ -9,46 +9,16 @@ trait Common
     /***
      * @return array
      */
-    protected static function castVar(mixed $param)
+    protected static function getDefaultValueByType($param)
     {
-        $response = null;
-
-        switch ($param) {
-            case 'int':
-
-                $response = (string) $param;
-
-                if (is_numeric($param)) {
-                    $response = (int) $param;
-                }
-
-                break;
-            case 'string':
-                $response = (string) $param;
-                break;
-            case 'float':
-
-                $response = (string) $param;
-
-                if (is_numeric($param)) {
-                    $response = (float) $param;
-                }
-
-                break;
-            case 'boolean':
-                $response = (bool) $param;
-                break;
-            case 'Array':
-                $response = (array) $param;
-                break;
-            case 'Object':
-                $response = (object) $param;
-                break;
-            default:
-                $response = (string) $param;
-                break;
+        if ($param === 'string') {
+            return "";
         }
-        
-        return $response;
+
+        if (in_array($param, ['int', 'float'])) {
+            return 0;
+        }
+
+        return false;
     }
 }

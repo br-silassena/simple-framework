@@ -4,16 +4,16 @@ declare (strict_types=1);
 
 namespace App\Controller;
 
+use App\Models\UserModel;
 use System\BaseController;
 
 class TestController extends BaseController
 {
-    public function __construct(string $nome, int $idade, float $salario)
-    {
-        echo "nome é " . gettype($nome). " idade é " . gettype($idade). " salario é " . gettype($salario);
-    }
+    public function __construct()
+    {}
 
-    public function index() {
-        return $this->view('welcome');
+    public function listUsers(UserModel $userModel, int $idade)
+    {
+        return $userModel->list();
     }
 }

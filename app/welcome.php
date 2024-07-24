@@ -55,7 +55,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>MyMicroFramework</h1>
+        <h1>Simple Framework</h1>
         <p>Seja bem-vindo à nossa incrível plataforma.</p>
     </div>
 </body>

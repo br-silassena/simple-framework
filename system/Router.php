@@ -50,6 +50,8 @@ abstract class Router
                     $object = ServiceContainer::container($controler);
                     $params = self::sanitizeParams($object, $method, $params);
 
+                    var_dump($params);
+
                     echo $object->$method(...$params);
                     return;
                 }

@@ -64,12 +64,8 @@ abstract class ServiceContainer
 
                 array_push($params, $instance);
             } else {
-                // Se não houver tipo de classe definido ou a classe não existir, apenas adicione o parâmetro ao array
-                $param = self::castVar($param);
 
-                echo gettype($param);
-
-                array_push($params, $param);
+                array_push($params, self::getDefaultValueByType($param->getType()));
             }
         }
 

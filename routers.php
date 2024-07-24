@@ -13,7 +13,7 @@ use App\Controller\TestController;
  */
 $routes = [
     '' => [HomeController::class, 'index'],
-    '/tipos' => [TestController::class, 'index']
+    '/users' => [TestController::class, 'listUsers']
 ];
 
 return $routes;
