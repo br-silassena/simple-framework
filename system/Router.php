@@ -48,6 +48,7 @@ abstract class Router
                     $controler = $routerValue[0];
                     $method = $routerValue[1];
                     $object = ServiceContainer::container($controler);
+                    
                     $params = self::sanitizeParams($object, $method, $params);
 
                     var_dump($params);
