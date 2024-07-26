@@ -12,11 +12,11 @@ class BaseModel extends Conexao
 
     protected array $fields;
 
-    private Object $pdo;
+    private mixed $pdo;
 
     public function __construct()
     {
-        $this->pdo = Conexao::conn();
+       $this->pdo = Conexao::conn();
     }
 
     // Create
@@ -37,8 +37,8 @@ class BaseModel extends Conexao
         return $stmt->execute();
     }
 
-    // Read
-    protected function read(array $conditions = []): array
+    // get
+    protected function get(array $conditions = []): array
     {
         $sql = "SELECT * FROM $this->table";
         if ($conditions) {
@@ -53,6 +53,7 @@ class BaseModel extends Conexao
         }
 
         $stmt->execute();
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -117,8 +118,13 @@ class BaseModel extends Conexao
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    private function fill(array $assocArray): array {
-
+    /**
+     * @param array $assocArray
+     *
+     * @return array
+     */
+    private function fill(array $assocArray): array
+    {
         $keys = $this->fields;
         $result = [];
     

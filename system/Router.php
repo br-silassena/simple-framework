@@ -9,7 +9,10 @@ use System\ServiceContainer;
 
 abstract class Router
 {
+    use traits\Common;
+
     /**
+     * 
      * @return void
      */
     final public static function getRouter(array $routes): void
@@ -34,7 +37,7 @@ abstract class Router
 
                     if (strpos($valeuUriFile, '{') !== false) {
                         $fileRouter[$keyUriFile] = $browserRouter[$keyUriFile];
-                        $params[] = $browserRouter[$keyUriFile];
+                        $params[] = self::typeValue($browserRouter[$keyUriFile]);
                     }
 
                     if ($fileRouter[$keyUriFile] !== $browserRouter[$keyUriFile]) {
@@ -49,10 +52,9 @@ abstract class Router
                     $method = $routerValue[1];
                     $object = ServiceContainer::container($controler);
                     
-                    $params = self::sanitizeParams($object, $method, $params);
-
-                    var_dump($params);
-
+                    #falta implementar a injeção de dependencias pelo metodo
+                   // $params = ServiceContainer::resolveDepedenciasMethod($object, $method, $params);
+                    
                     echo $object->$method(...$params);
                     return;
                 }
@@ -60,58 +62,5 @@ abstract class Router
         }
 
         require __DIR__ ."/pages/404.php";
-    }
-
-
-    /***
-     * @return array
-     */
-    private static function sanitizeParams(Object $object, string $method, array $params): array
-    {
-        $dataMethodObject = new \ReflectionMethod($object, $method);
-        $paramaSanitize = [];
-
-        foreach ($dataMethodObject->getParameters() as $key => $p) {
-
-            if ($p->hasType()) {
-
-                switch ($p->getType()->getName()) {
-                    case 'int':
-
-                        $paramaSanitize[$key] = (string) $params[$key];
-
-                        if (is_numeric($params[$key])) {
-                            $paramaSanitize[$key] = (int) $params[$key];
-                        }
-
-                        break;
-                    case 'string':
-                        $paramaSanitize[$key] = (string) $params[$key];
-                        break;
-                    case 'float':
-
-                        $paramaSanitize[$key] = (string) $params[$key];
-
-                        if (is_numeric($params[$key])) {
-                            $paramaSanitize[$key] = (float) $params[$key];
-                        }
-
-                        break;
-                    case 'boolean':
-                        $paramaSanitize[$key] = (bool) $params[$key];
-                        break;
-                    case 'Array':
-                        $paramaSanitize[$key] = (array) $params[$key];
-                        break;
-                    case 'Object':
-                        $paramaSanitize[$key] = (object) $params[$key];
-                        break;
-                    default:
-                        $paramaSanitize[$key] = (string) $params[$key];
-                        break;
-                }
-            }
-        }
-        return $paramaSanitize;
     }
 }

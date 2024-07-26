@@ -7,7 +7,7 @@ namespace App\Controller;
 use App\Models\UserModel;
 use System\BaseController;
 
-class HomeController extends BaseController
+class UserController extends BaseController
 {
     /**
      * @var UserModel $user
@@ -21,9 +21,6 @@ class HomeController extends BaseController
     {
         $this->user = $user;
     }
-
-    public function index()
-    {
-        return $this->view('welcome');
-    }
 }
+
+

@@ -21,9 +21,4 @@ class UserModel extends BaseModel
     {
        parent::__construct();
     }
-
-    public function list() {
-
-        return $this->read();
-    }
 }

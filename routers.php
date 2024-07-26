@@ -12,8 +12,7 @@ use App\Controller\TestController;
  *  "/namerouter/paramrouter"
  */
 $routes = [
-    '' => [HomeController::class, 'index'],
-    '/users' => [TestController::class, 'listUsers']
+    '' => [HomeController::class, 'index']
 ];
 
 return $routes;
