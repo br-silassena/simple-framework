@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace System;
 
 use System\traits\Request;
+use System\Config\Config;
 
 class BaseController
 {
@@ -23,5 +24,13 @@ class BaseController
             ${$key} = $value;
         }
         require __DIR__ . "/../app/{$view}.php";
+    }
+
+    /**
+     * @return string
+     */
+    public function baseUrl(): string
+    {
+        return Config::loadConfig('url_base');
     }
 }
