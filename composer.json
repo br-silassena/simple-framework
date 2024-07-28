@@ -3,7 +3,7 @@
     "description": "simples framework without framework",
     "type": "project",
     "license": "GPL-3.0-or-later",
-    "version": "1.0.1",
+    "version": "v1.1.1",
     "authors": [
         {
             "name": "Silas Sena"
