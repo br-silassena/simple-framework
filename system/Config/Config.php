@@ -14,10 +14,10 @@ abstract class Config {
         'database' => [
 
             'mysql' => [
-
                 'host' => 'mysql',
-                'banco' =>'dbdados',
-                'username' => 'admin',
+                'banco' =>'appdados',
+                'port' =>'3306',
+                'username' => 'appdados',
                 'password' => '12345678'
             ]
         ]

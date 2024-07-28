@@ -26,7 +26,7 @@ abstract class LogError {
     /**
      * trata todas as exceções nao capturadas
      */
-    static public function exceptionHandler(Exception $exception): void
+    static public function exceptionHandler($exception): void
     {
         
         $message = date('Y-m-d H:i:s') . " - Exception: " . $exception->getMessage() . "\n";

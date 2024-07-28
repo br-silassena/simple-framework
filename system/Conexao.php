@@ -15,6 +15,7 @@ class Conexao
     private mixed $conexao;
     private string $host;
     private string $banco;
+    private string $port;
     private string $username;
     private string $password;
 
@@ -22,11 +23,12 @@ class Conexao
     {
         $this->host = Config::loadConfig('database.mysql.host');
         $this->banco = Config::loadConfig('database.mysql.banco');
+        $this->banco = Config::loadConfig('database.mysql.port');
         $this->username = Config::loadConfig('database.mysql.username');
         $this->password = Config::loadConfig('database.mysql.password');
 
         try {
-            $this->conexao = new PDO("mysql:host=$this->host;dbname=$this->banco", $this->username, $this->password);
+            $this->conexao = new PDO("mysql:host=$this->host;port=$this->port;dbname=$this->banco", $this->username, $this->password);
             $this->conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (Exception $e) {
             $this->conexao = null;
