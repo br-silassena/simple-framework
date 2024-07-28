@@ -27,10 +27,60 @@ class BaseController
     }
 
     /**
+     * @param string $url
+     * 
      * @return string
      */
-    public function baseUrl(): string
+    public function baseUrl(string $url = ""): string
     {
-        return Config::loadConfig('url_base');
+        return Config::loadConfig('url_base') . $url;
+    }
+
+    /**
+     * @param string $string
+     * 
+     * @return string
+     */
+    public function redirect(string $router) {
+        
+        $fullRouter = $this->baseUrl($router);
+        header("Location:  $fullRouter");
+    }
+
+    /**
+     * @param string $string
+     * 
+     * @return string
+     */
+    public function slug(string $string): string 
+    {
+        // Converter para minúsculas
+        $string = strtolower($string);
+    
+        // Substituir caracteres especiais
+        $unwanted_array = [
+            'á'=>'a','à'=>'a','ã'=>'a','â'=>'a','ä'=>'a',
+            'é'=>'e','è'=>'e','ê'=>'e','ë'=>'e',
+            'í'=>'i','ì'=>'i','î'=>'i','ï'=>'i',
+            'ó'=>'o','ò'=>'o','õ'=>'o','ô'=>'o','ö'=>'o',
+            'ú'=>'u','ù'=>'u','û'=>'u','ü'=>'u',
+            'ç'=>'c',
+            'ñ'=>'n'
+        ];
+        $string = strtr($string, $unwanted_array);
+    
+        // Substituir qualquer coisa que não seja uma letra, número ou espaço por um espaço
+        $string = preg_replace('/[^a-z0-9\s-]/', '', $string);
+    
+        // Substituir múltiplos espaços ou hifens por um único espaço
+        $string = preg_replace('/[\s-]+/', ' ', $string);
+    
+        // Substituir espaços por hifens
+        $string = preg_replace('/\s/', '-', $string);
+    
+        // Remover hifens no início e no final da string
+        $string = trim($string, '-');
+    
+        return $string;
     }
 }
