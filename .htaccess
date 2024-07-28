@@ -1,0 +1,10 @@
+# Ativar o motor de reescrita
+RewriteEngine On
+
+# Definir a base como a raiz do projeto
+RewriteBase /
+
+# Redirecionar todas as solicitações para index.php, exceto as solicitações para arquivos e diretórios existentes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]

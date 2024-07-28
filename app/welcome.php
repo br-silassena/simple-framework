@@ -58,5 +58,7 @@
         <h1>Simple Framework</h1>
         <p>Seja bem-vindo à nossa incrível plataforma.</p>
     </div>
+
+    <script src="<?= $this->baseUrl() .'/assets/index.js' ?>"></script>
 </body>
 </html>
