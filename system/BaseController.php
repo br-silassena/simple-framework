@@ -83,4 +83,23 @@ class BaseController
     
         return $string;
     }
+
+     /**
+     * 
+     * @param string $data_original = "2024-04-24 00:00:00";
+     *
+     * @return string
+     */
+    public function brData(string $data_original, $withTime = false): string
+    {
+        $mask = 'd/m/Y';
+
+        $timestamp = strtotime($data_original);
+
+        if ($withTime) {
+            $mask = 'd/m/Y H:i:s';
+        }
+
+        return date($mask, $timestamp) ?? $data_original;
+    }
 }

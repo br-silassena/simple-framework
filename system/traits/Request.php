@@ -19,7 +19,15 @@ trait Request
         }
 
         return array_map(function ($item) {
-            return htmlspecialchars($item, ENT_QUOTES, 'UTF-8');
+            if (is_array($item)) {
+                // Se o item é um array (por exemplo, multi-select), sanitiza cada valor
+                return array_map(function ($subItem) {
+                    return htmlspecialchars($subItem, ENT_QUOTES, 'UTF-8');
+                }, $item);
+            } else {
+                // Sanitiza valor simples
+                return htmlspecialchars($item, ENT_QUOTES, 'UTF-8');
+            }
         }, $_POST);
     }
 
